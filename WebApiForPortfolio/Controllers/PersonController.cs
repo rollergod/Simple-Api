@@ -16,19 +16,19 @@ namespace WebApiForPortfolio.Controllers
             repository = repos;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await repository.GetAllPeople());
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await repository.GetById(id));
         }
 
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> AddPerson(Person person)
         {
             bool result = true;
@@ -48,7 +48,7 @@ namespace WebApiForPortfolio.Controllers
             return result ? Ok(person + "Added") : NotFound("Bad");
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task<IActionResult> UpdatePerson(Person person)
         {
             bool result = true;
@@ -66,7 +66,7 @@ namespace WebApiForPortfolio.Controllers
             return result ? Ok(person + "Updated") : BadRequest("Not updated");
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(int id)
         {
             bool result = true;
